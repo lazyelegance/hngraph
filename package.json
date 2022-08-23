@@ -1,0 +1,27 @@
+{
+  "name": "hngraph",
+  "version": "1.0.0",
+  "description": "hn graph api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --transpile-only --no-notify --exit-child src/index.ts",
+    "generate": "ts-node --transpile-only src/schema.ts"
+  },
+  "author": "Ezra Bathini",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@graphql-tools/load-files": "^6.6.1",
+    "apollo-datasource": "^3.3.2",
+    "apollo-datasource-rest": "^3.7.0",
+    "apollo-server": "^3.10.1",
+    "graphql": "^16.6.0",
+    "graphql-modules": "^2.1.0",
+    "reflect-metadata": "^0.1.13"
+  }
+}
