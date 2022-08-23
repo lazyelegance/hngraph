@@ -1,5 +1,5 @@
 import { createModule, gql } from 'graphql-modules';
-import { StoryProvider } from './story.provider';
+import { StoryProvider } from './hn.provider';
 
 const typeDefs = gql`
   enum Type {
@@ -58,8 +58,8 @@ const resolvers = {
   },
 };
 
-export const story = createModule({
-  id: 'story',
+export const hn = createModule({
+  id: 'hn',
   dirname: __dirname,
   typeDefs,
   resolvers,
