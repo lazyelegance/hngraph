@@ -2,7 +2,14 @@ import { createModule, gql } from 'graphql-modules';
 import { StoryProvider } from './story.provider';
 
 const typeDefs = gql`
-  type Story {
+  enum Type {
+    job
+    story
+    comment
+    poll
+    pollopt
+  }
+  type Item {
     by: String
     descendants: Int
     id: Int
@@ -10,27 +17,27 @@ const typeDefs = gql`
     score: Int
     time: Int
     title: String
-    type: String
+    type: Type
     url: String
   }
   type TopStory {
     id: ID!
-    story: Story
+    story: Item
   }
   type Query {
-    getStory(id: ID!): Story
+    getItem(id: ID!): Item
     topStories: [TopStory]
   }
 `;
 
 const resolvers = {
   Query: {
-    getStory(
+    getItem(
       root: unknown,
       { id }: { id: string },
       { injector }: GraphQLModules.Context
     ) {
-      return injector.get(StoryProvider).getStory(id);
+      return injector.get(StoryProvider).getItem(id);
     },
     topStories(
       r: unknown,
@@ -46,7 +53,7 @@ const resolvers = {
       args: unknown,
       { injector }: GraphQLModules.Context
     ) {
-      return injector.get(StoryProvider).getStory(id);
+      return injector.get(StoryProvider).getItem(id);
     },
   },
 };

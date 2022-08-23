@@ -3,7 +3,7 @@ import { DataSourceConfig } from 'apollo-datasource';
 import { RESTDataSource } from 'apollo-datasource-rest';
 import 'reflect-metadata';
 
-export interface Story {
+export interface Item {
   by: string;
   descendants: number;
   id: number;
@@ -33,7 +33,7 @@ export class StoryProvider extends RESTDataSource {
     }));
   }
 
-  async getStory(id: string): Promise<Story> {
+  async getItem(id: string): Promise<Item> {
     const resp = await this.get(`item/${id}.json?print=pretty`);
 
     return resp;
