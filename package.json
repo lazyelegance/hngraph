@@ -6,12 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --transpile-only --no-notify --exit-child src/index.ts",
-    "generate": "ts-node --transpile-only src/schema.ts"
+    "generate": "ts-node --transpile-only src/schema.ts",
+    "start": "ts-node --transpile-only src/index"
   },
   "author": "Ezra Bathini",
   "license": "ISC",
   "devDependencies": {
-    "dotenv": "^16.0.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.7.4"
   },
@@ -22,6 +22,8 @@
     "apollo-server": "^3.10.1",
     "graphql": "^16.6.0",
     "graphql-modules": "^2.1.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.9.1",
+    "dotenv": "^16.0.1"
   }
 }
