@@ -15,6 +15,29 @@ extend type Item {
   comments: [ItemById]
 }
 
+extend type Item {
+  polloptions: [PollOptionById]
+}
+
+type PollOption {
+  id: Int
+  score: Int
+  time: Int
+  type: Type
+  url: String
+  text: String
+  poll: Int
+}
+
+type PollOptionById {
+  id: ID!
+  polloption: PollOption
+}
+
+extend type Item {
+  poll: Int
+}
+
 type ItemById {
   id: ID!
   story: Item

@@ -18,6 +18,10 @@ export default {
       switch (storyType) {
         case StoryType.TOP:
           return injector.get(HNProvider).getTopStories();
+        case StoryType.NEW:
+          return injector.get(HNProvider).getNewStories();
+        case StoryType.BEST:
+          return injector.get(HNProvider).getBestStories();
         case StoryType.ASK:
           return injector.get(HNProvider).getAskStories();
         case StoryType.JOB:

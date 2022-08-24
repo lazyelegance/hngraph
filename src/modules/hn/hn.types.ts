@@ -10,6 +10,8 @@ export interface Item {
   url: string;
   parent: number;
   text: string;
+  poll: number;
+  parts: number[];
 }
 
 export interface User {
@@ -22,6 +24,8 @@ export interface User {
 
 export enum StoryType {
   TOP = 'TOP',
+  NEW = 'NEW',
+  BEST = 'BEST',
   ASK = 'ASK',
   JOB = 'JOB',
   SHOW = 'SHOW',

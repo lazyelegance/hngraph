@@ -30,6 +30,14 @@ export class HNProvider extends RESTDataSource {
     return await this.idMappedResponse('topstories.json?print=pretty');
   }
 
+  async getNewStories(): Promise<{ id: number }[]> {
+    return await this.idMappedResponse('newstories.json?print=pretty');
+  }
+
+  async getBestStories(): Promise<{ id: number }[]> {
+    return await this.idMappedResponse('beststories.json?print=pretty');
+  }
+
   async getAskStories(): Promise<{ id: number }[]> {
     return await this.idMappedResponse('askstories.json?print=pretty');
   }
@@ -45,11 +53,24 @@ export class HNProvider extends RESTDataSource {
   async getItem(id: string): Promise<Item> {
     const resp = await this.get(`item/${id}.json?print=pretty`);
 
-    const { kids, by } = resp;
+    const { kids, by, type, parts } = resp;
 
-    return kids
-      ? { ...resp, by: { id: by }, comments: mapId(kids) }
-      : { ...resp, by: { id: by } };
+    const comments = kids ? mapId(kids) : null;
+    const polloptions = type === 'poll' ? mapId(parts) : null;
+
+    let result = {
+      ...resp,
+      by: { id: by },
+    };
+
+    if (comments) {
+      result = { ...result, comments };
+    }
+    if (polloptions) {
+      result = { ...result, polloptions };
+    }
+
+    return result;
   }
 
   async getUser(id: string): Promise<User> {
