@@ -1,5 +1,8 @@
 import { ApolloServer, gql } from 'apollo-server';
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import {
+  ApolloServerPluginLandingPageLocalDefault,
+  ApolloServerPluginLandingPageGraphQLPlayground,
+} from 'apollo-server-core';
 import { application } from './application';
 
 const executor = application.createApolloExecutor();
@@ -12,7 +15,8 @@ const server = new ApolloServer({
   executor,
   csrfPrevention: true,
   cache: 'bounded',
-  plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
+  plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+  introspection: !!process.env.ENABLE_INTROSPECTION || false,
 });
 
 // The `listen` method launches a web server.
