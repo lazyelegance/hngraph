@@ -1,0 +1,15 @@
+type User {
+  about: String
+  created: Int
+  id: ID!
+  karma: Int
+}
+
+extend type User {
+  submitted: [ItemById]
+}
+
+type UserById {
+  id: String
+  user: User
+}

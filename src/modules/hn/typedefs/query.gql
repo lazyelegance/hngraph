@@ -1,0 +1,11 @@
+enum StoryType {
+  TOP
+  ASK
+  JOB
+  SHOW
+}
+type Query {
+  getItem(id: ID!): Item
+  userById(id: ID!): User
+  stories(storyType: StoryType!): [ItemById]
+}

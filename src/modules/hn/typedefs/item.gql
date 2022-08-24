@@ -1,0 +1,29 @@
+type Item {
+  by: UserById
+  descendants: Int
+  id: Int
+  score: Int
+  time: Int
+  title: String
+  type: Type
+  url: String
+  parent: Int
+  text: String
+}
+
+extend type Item {
+  comments: [ItemById]
+}
+
+type ItemById {
+  id: ID!
+  story: Item
+}
+
+enum Type {
+  job
+  story
+  comment
+  poll
+  pollopt
+}
